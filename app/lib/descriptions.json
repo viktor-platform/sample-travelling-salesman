@@ -1,0 +1,13 @@
+{
+    "Population size" : "Number of solutions we are going to compare to each other every generation. For the self-organizing maps algorithm a population size eight times the number of nodes is suggested.",
+    "Generations" : "The number of generations this algorithm will try to get a better solution then the previous.",
+    "Learning rate" : "Controls the exploration and explotation of the algorithm. A high number indicates an aggressive search.",
+    "Decay" : "Decays the learning rate over time so the algorithm gets less aggressive.",
+    "Elite size" : "Because the genetical algorithm is random we want to breed only the best. The elite size is the number of solutions we want to use for the offspring each generation.",
+    "Mutation rate" : "The mutation rate is the chance a city get's swapped with a random other city on its route.",
+    "Improvement threshold" : "This algorithm stops if a new solution is not improvement more than the threshold.",
+    "Two opt" : "[2-opt](https://en.wikipedia.org/wiki/2-opt) is a simple local search algorithm for solving the traveling salesman problem. The main idea behind it is to take a route that crosses over itself and reorder it so that it does not.",
+    "Genetical algorithm" : "A [genetical algorithm](https://towardsdatascience.com/evolution-of-a-salesman-a-complete-genetic-algorithm-tutorial-for-python-6fe5d2b3ca35) is a search heuristic that is inspired by Charles Darwin's theory of natural evolution. This algorithm reflects the process of natural selection where the fittest individuals are selected for reproduction in order to produce offspring of the next generation. In this app each individual is a different route.",
+    "Self-organizing maps" : "A [self-organizing map](https://diego.codes/post/som-tsp/) is inspired by a neural network. Closely related to the map. The purpose of the technique is to represent the model with a lower number of dimensions, while maintaining the relations of similarity of the nodes contained in it.\nTo capture this similarity, the nodes in the map are spatially organized to be closer the more similar they are with each other.",
+    "Topology" : "Generate the topology however you like by adjusting these parameters. The app will keep a highscore for every different topology created."
+}

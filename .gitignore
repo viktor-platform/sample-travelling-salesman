@@ -1,0 +1,8 @@
+venv
+*.pyc
+dev-requirements.txt
+pyproject.toml
+run_code_quality_tools.sh
+*.mp4
+*.Identifier
+*.zip
