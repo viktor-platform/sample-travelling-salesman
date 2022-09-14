@@ -20,7 +20,7 @@ _method_options = [
 ]
 
 # Use a json file with all the descriptions to not clutter this file
-with open(Path(__file__).parent.parent / "lib" / "descriptions.json") as json_file:
+with open(Path(__file__).parent / "source" / "lib" / "descriptions.json") as json_file:
     descriptions = json.load(json_file)
 
 

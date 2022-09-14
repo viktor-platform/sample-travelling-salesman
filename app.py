@@ -1,3 +1,4 @@
+import json
 from typing import Union
 
 import numpy as np
@@ -8,18 +9,14 @@ from viktor.core import File
 from viktor.core import Storage
 from viktor.core import ViktorController
 from viktor.utils import memoize
-from viktor.views import DataGroup
-from viktor.views import DataItem
-from viktor.views import PlotlyAndDataResult
-from viktor.views import PlotlyAndDataView
 from viktor.views import PlotlyResult
 from viktor.views import PlotlyView
 
-from .parametrization import AppParametrization
-from .patterns import get_circle_points
-from .patterns import get_random_points
-from .plotting import plot_fitness
-from .traveling_saleman_problem import tsp
+from parametrization import AppParametrization
+from source.patterns import get_circle_points
+from source.patterns import get_random_points
+from source.plotting import plot_animation_and_fitness
+from source.traveling_saleman_problem import tsp
 
 
 def update_highscore(score: float, key: int) -> float:
@@ -96,26 +93,12 @@ class Controller(ViktorController):
     label = "Traveling Salesman Problem"
     parametrization = AppParametrization
 
-    @PlotlyAndDataView("Route", duration_guess=10)
-    def get_tsp_result(self, params, **kwargs):
-        """Plots the animation made by solving the traveling salesman problem."""
-        fig, data, highscore_key = run_tsp(params)
+    @PlotlyView("Route and fitness function", duration_guess=10)
+    def get_tsp_result_and_fitness(self, params, **kwargs):
+        """Plot an animation made by solving the traveling salesman problem, together with the fitness
+        function."""
+        fig_animation, data, highscore_key = run_tsp(params)
 
-        # Create datagroup
-        items = []
-        for key, value in data.items():
-            items.append(DataItem(key, value[-1]))
-
-        score = update_highscore(data["Calculated distance"][-1], highscore_key)
-        items.append(DataItem("Topology highscore", score))
-
-        return PlotlyAndDataResult(fig, DataGroup(*items))
-
-    @PlotlyView("Fitness", duration_guess=10)
-    def get_tsp_fitness(self, params, **kwargs):
-        """Plot the fitness function."""
-        _, data, _ = run_tsp(params)
-
-        fig = plot_fitness(data["Max iteration"], data["Calculated distance"])
+        fig = plot_animation_and_fitness(json.loads(fig_animation), data)
 
         return PlotlyResult(fig.to_json())
