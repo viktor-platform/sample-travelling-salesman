@@ -1,3 +1,4 @@
+![](https://img.shields.io/badge/SDK-v13.4.0-blue) <Please check version is the same as specified in requirements.txt>
 # sample-traveling-salesman-problem
 
 The [traveling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem) is a popular subject when discussing [NP-hard](https://en.wikipedia.org/wiki/NP-hardness) problems. There are a lot of different approaches to solving this problem. The goal of this app is to showcase some of these approaches inside the VIKTOR environment. While no new approach is developed in this app, the app will allow you to play with the different algorithms so you can try to get the best solution for a generated topology.
