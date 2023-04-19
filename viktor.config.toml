@@ -1,2 +1,2 @@
-python_version='3.9'
-app_type = 'simple'
+python_version='3.10'
+app_type = 'editor'
