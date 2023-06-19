@@ -3,7 +3,7 @@ from typing import Union
 import numpy as np
 import pandas as pd
 
-from viktor.core import UserException
+from viktor.core import UserError
 
 from .helpers import path_distance
 
@@ -163,8 +163,8 @@ def self_organizing_maps(
 
         # Check if any parameter has completely decayed.
         if n < 1:
-            raise UserException("Radius has completely decayed, finishing execution at {} iterations".format(i))
+            raise UserError("Radius has completely decayed, finishing execution at {} iterations".format(i))
         if learning_rate < 0.001:
-            raise UserException("Learning rate has completely decayed, finishing execution at {} iterations".format(i))
+            raise UserError("Learning rate has completely decayed, finishing execution at {} iterations".format(i))
 
     return routes, np.arange(0, iterations + 1, 1).tolist(), distances
