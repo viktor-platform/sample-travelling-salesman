@@ -4,6 +4,7 @@ from typing import Union
 import numpy as np
 import plotly.express as px
 from munch import Munch
+from pathlib import Path
 
 from viktor.core import File
 from viktor.core import Storage
@@ -11,6 +12,8 @@ from viktor.core import ViktorController
 from viktor.utils import memoize
 from viktor.views import PlotlyResult
 from viktor.views import PlotlyView
+from viktor.views import WebResult
+from viktor.views import WebView
 
 from parametrization import AppParametrization
 from source.patterns import get_circle_points
@@ -102,3 +105,13 @@ class Controller(ViktorController):
         fig = plot_animation_and_fitness(json.loads(fig_animation), data)
 
         return PlotlyResult(fig.to_json())
+
+
+    @WebView("What's next?", duration_guess=1)
+    def whats_next(self, params, **kwargs):
+        """Initiates the process of rendering the "What's next" tab."""
+        html_path = Path(__file__).parent / "next_step.html"
+        with html_path.open(encoding="utf-8") as _file:
+            html_string = _file.read()
+        return WebResult(html=html_string)
+
